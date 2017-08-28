@@ -2,12 +2,13 @@ var express = require('express'),
   app = express(),
   port = process.env.PORT || 3000,
   mongoose = require('mongoose'),
-  Photo = require('./api/models/photoModel'), //created model loading here
+  Photo = require('./api/models/photoModel'), 
+  User = require('./api/models/userModel'), 
   bodyParser = require('body-parser');
   
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/PlaceDB'); 
+mongoose.connect('mongodb://localhost/PlaceDB', { useMongoClient: true }); 
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
